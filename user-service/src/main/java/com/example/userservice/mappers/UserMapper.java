@@ -1,7 +1,6 @@
-package com.example.microservice.mappers;
-
-import com.example.microservice.dtos.UserDTO;
-import com.example.microservice.models.User;
+package com.example.userservice.mappers;
+import com.example.userservice.dtos.UserDTO;
+import com.example.userservice.models.User;
 
 public class UserMapper {
     UserMapper() {

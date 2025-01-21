@@ -1,4 +1,4 @@
-package com.example.microservice.enums;
+package com.example.userservice.enums;
 
 public enum RoleType {
     ADMIN,

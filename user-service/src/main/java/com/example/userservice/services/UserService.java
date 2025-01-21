@@ -1,7 +1,7 @@
-package com.example.microservice.services;
+package com.example.userservice.services;
 
-import com.example.microservice.dtos.UserDTO;
-import com.example.microservice.enums.RoleType;
+import com.example.userservice.dtos.UserDTO;
+import com.example.userservice.enums.RoleType;
 import org.apache.coyote.BadRequestException;
 
 import java.util.List;

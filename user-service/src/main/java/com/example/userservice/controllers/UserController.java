@@ -1,4 +1,4 @@
-package com.example.microservice.controllers;
+package com.example.userservice.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

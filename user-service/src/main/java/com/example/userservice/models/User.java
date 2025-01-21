@@ -1,6 +1,6 @@
-package com.example.microservice.models;
+package com.example.userservice.models;
 
-import com.example.microservice.enums.RoleType;
+import com.example.userservice.enums.RoleType;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,14 +1,14 @@
-package com.example.microservice.services.implementation;
+package com.example.userservice.services.implementation;
 
-import com.example.microservice.dtos.UserDTO;
-import com.example.microservice.enums.RoleType;
-import com.example.microservice.exceptions.EmailAlreadyExistException;
-import com.example.microservice.exceptions.UserNameAlreadyExistException;
-import com.example.microservice.exceptions.UserNotFoundException;
-import com.example.microservice.mappers.UserMapper;
-import com.example.microservice.models.User;
-import com.example.microservice.repositories.UserRepository;
-import com.example.microservice.services.UserService;
+import com.example.userservice.dtos.UserDTO;
+import com.example.userservice.enums.RoleType;
+import com.example.userservice.exceptions.EmailAlreadyExistException;
+import com.example.userservice.exceptions.UserNameAlreadyExistException;
+import com.example.userservice.exceptions.UserNotFoundException;
+import com.example.userservice.mappers.UserMapper;
+import com.example.userservice.models.User;
+import com.example.userservice.repositories.UserRepository;
+import com.example.userservice.services.UserService;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

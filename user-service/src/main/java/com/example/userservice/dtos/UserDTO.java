@@ -1,6 +1,6 @@
-package com.example.microservice.dtos;
+package com.example.userservice.dtos;
 
-import com.example.microservice.enums.RoleType;
+import com.example.userservice.enums.RoleType;
 
 public class UserDTO {
     private Long id;
