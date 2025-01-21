@@ -22,4 +22,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleUserNotFoundException(UserNotFoundException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
+
+    @ExceptionHandler(RoleIdDoesNotExistException.class)
+    public ResponseEntity<?> handleRoleIdDoesNotExistException(RoleIdDoesNotExistException exception) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
+    }
 }

@@ -43,6 +43,7 @@ public class UserDTO {
         this.roleId = roleId;
     }
 
+
     public void setRoleId(RoleType role) {
         this.roleId = role == RoleType.ADMIN ? 1L : 2L;
     }

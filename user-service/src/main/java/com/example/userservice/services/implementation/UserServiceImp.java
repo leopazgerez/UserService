@@ -3,6 +3,7 @@ package com.example.userservice.services.implementation;
 import com.example.userservice.dtos.UserDTO;
 import com.example.userservice.enums.RoleType;
 import com.example.userservice.exceptions.EmailAlreadyExistException;
+import com.example.userservice.exceptions.RoleIdDoesNotExistException;
 import com.example.userservice.exceptions.UserNameAlreadyExistException;
 import com.example.userservice.exceptions.UserNotFoundException;
 import com.example.userservice.mappers.UserMapper;
@@ -34,6 +35,9 @@ public class UserServiceImp implements UserService {
         if (user.getUserName().isEmpty() | user.getEmail().isEmpty()) {
             throw new BadRequestException("Username or email is empty");
         }
+        if (user.getRoleId() == 0 && user.getRoleId() > 3) {
+            throw new RoleIdDoesNotExistException("Role id does not exist");
+        }
         User savedUser = userRepository.save(userMapper.dtoToEntity(user));
         return userMapper.entityToDto(savedUser);
     }
@@ -47,8 +51,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public UserDTO updateUser(UserDTO userDTO) {
-        User foundUser = userRepository.findById(userDTO.getId()).orElseThrow(() -> new UserNotFoundException("User not found"));
+    public UserDTO updateUser(UserDTO userDTO, Long id) {
+        User foundUser = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         foundUser.setEmail(userDTO.getEmail());
         foundUser.setUserName(userDTO.getUserName());
         User savedUser = userRepository.save(foundUser);
