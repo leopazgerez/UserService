@@ -1,7 +1,10 @@
 package com.example.userservice.mappers;
+
 import com.example.userservice.dtos.UserDTO;
 import com.example.userservice.models.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
     UserMapper() {
     }
