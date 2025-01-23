@@ -1,27 +1,30 @@
 package com.example.userservice.controllers;
 
+import com.example.userservice.dtos.UserDTO;
+import com.example.userservice.services.UserService;
+import org.apache.coyote.BadRequestException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    @Autowired
+    UserService userService;
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllUsers() {
-        return ResponseEntity.ok("hola");
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createUser() {
-        return ResponseEntity.ok("Creado");
+    public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) throws BadRequestException {
+        return ResponseEntity.ok(userService.createUser(userDTO));
     }
 
     @GetMapping("/roles")
     public ResponseEntity<?> getAllRoles() {
-        return ResponseEntity.ok("Roles");
+        return ResponseEntity.ok(userService.getAllRoles());
     }
 }
