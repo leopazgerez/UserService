@@ -2,7 +2,6 @@ package com.example.userservice.services;
 
 import com.example.userservice.dtos.UserDTO;
 import com.example.userservice.enums.RoleType;
-import com.example.userservice.models.EmailDTO;
 import org.apache.coyote.BadRequestException;
 
 import java.util.List;
