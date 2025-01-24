@@ -43,6 +43,12 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public boolean existUser(Long userId) {
+        User userFound = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return userFound != null;
+    }
+
+    @Override
     public List<UserDTO> getAllUsers() {
         return userRepository.findAll()
                 .stream()

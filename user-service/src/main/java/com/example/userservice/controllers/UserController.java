@@ -27,4 +27,9 @@ public class UserController {
     public ResponseEntity<?> getAllRoles() {
         return ResponseEntity.ok(userService.getAllRoles());
     }
+
+    @GetMapping("/userId/{userId}")
+    public ResponseEntity<?> getAllRoles(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.existUser(userId));
+    }
 }

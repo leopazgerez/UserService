@@ -39,9 +39,9 @@ public class UserDTO {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
+//    public void setRoleId(Long roleId) {
+//        this.roleId = roleId;
+//    }
 
 
     public void setRoleId(RoleType role) {
