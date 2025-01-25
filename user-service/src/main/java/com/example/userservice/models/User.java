@@ -13,7 +13,7 @@ public class User {
     private String userName;
     @Column(unique = true)
     private String email;
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private RoleType role;
 
     public User() {
@@ -43,7 +43,7 @@ public class User {
         return role;
     }
 
-    public void setRole(Long id) {
-        this.role = id == 1 ? RoleType.ADMIN : RoleType.USER;
+    public void setRole(RoleType role) {
+        this.role = role;
     }
 }

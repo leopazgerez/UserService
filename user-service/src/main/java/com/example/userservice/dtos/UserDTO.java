@@ -1,12 +1,19 @@
 package com.example.userservice.dtos;
 
 import com.example.userservice.enums.RoleType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Email;
 
 public class UserDTO {
     private Long id;
+    @NotBlank(message = "El usuario es requerido")
     private String userName;
+    @NotBlank(message = "Email es requerido")
+    @Email
     private String email;
-    private Long roleId;
+    @NotNull(message = "Role id es requerido")
+    private RoleType role;
 
     public UserDTO() {
     }
@@ -35,16 +42,11 @@ public class UserDTO {
         this.email = email;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public RoleType getRole() {
+        return role;
     }
 
-//    public void setRoleId(Long roleId) {
-//        this.roleId = roleId;
-//    }
-
-
     public void setRoleId(RoleType role) {
-        this.roleId = role == RoleType.ADMIN ? 1L : 2L;
+        this.role = role;
     }
 }
