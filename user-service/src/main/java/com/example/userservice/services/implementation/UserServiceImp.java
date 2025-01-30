@@ -42,6 +42,12 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public UserDTO getUserById(Long userId) {
+        User userFound = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
+        return userMapper.entityToDto(userFound);
+    }
+
+    @Override
     public List<UserDTO> getAllUsers() {
         return userRepository.findAll()
                 .stream()
