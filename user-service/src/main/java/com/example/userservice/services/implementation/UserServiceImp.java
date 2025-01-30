@@ -1,5 +1,6 @@
 package com.example.userservice.services.implementation;
 
+import com.example.userservice.Utils.RabbitValues;
 import com.example.userservice.dtos.UserDTO;
 import com.example.userservice.enums.RoleType;
 import com.example.userservice.exceptions.EmailAlreadyExistException;
@@ -10,6 +11,7 @@ import com.example.userservice.models.User;
 import com.example.userservice.repositories.UserRepository;
 import com.example.userservice.services.UserService;
 import org.apache.coyote.BadRequestException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,10 @@ public class UserServiceImp implements UserService {
     private UserRepository userRepository;
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    RabbitValues rabbitValues;
+    @Autowired
+    RabbitTemplate rabbitTemplate;
 
     @Override
     public UserDTO createUser(UserDTO user) throws BadRequestException {
@@ -32,6 +38,7 @@ public class UserServiceImp implements UserService {
             throw new EmailAlreadyExistException("Email already registered");
         }
         User savedUser = userRepository.save(userMapper.dtoToEntity(user));
+        rabbitTemplate.convertAndSend(rabbitValues.getExchange(),rabbitValues.getRegisteredUserRoutingKey(),userMapper.entityToDto(savedUser));
         return userMapper.entityToDto(savedUser);
     }
 
