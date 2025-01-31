@@ -38,12 +38,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .anyRequest().permitAll())
-                .formLogin(AbstractHttpConfigurer::disable)
-                .httpBasic(AbstractHttpConfigurer::disable)
-                .cors(httpSecurityCorsConfigurer -> corsConfigurationSource())
-                .sessionManagement(sessionManagement ->
-                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                );
+                .headers(headers ->
+                        headers.
+                                frameOptions(frameOptions -> frameOptions.sameOrigin()))
+                                .formLogin(AbstractHttpConfigurer::disable)
+                                .httpBasic(AbstractHttpConfigurer::disable)
+                                .cors(httpSecurityCorsConfigurer -> corsConfigurationSource())
+                                .sessionManagement(sessionManagement ->
+                                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                                );
 
         return http.build();
     }

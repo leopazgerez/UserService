@@ -19,10 +19,10 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO userDTO) throws BadRequestException {
-        return ResponseEntity.ok(userService.createUser(userDTO));
-    }
+//    @PostMapping("/create")
+//    public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO userDTO) throws BadRequestException {
+//        return ResponseEntity.ok(userService.createUser(userDTO));
+//    }
 
     @GetMapping("/roles")
     public ResponseEntity<?> getAllRoles() {

@@ -10,13 +10,15 @@ public class User {
     @GeneratedValue
     private Long id;
     @Column()
-    private String userName,password;
+    private String userName, password;
     @Column(unique = true)
     private String email;
     @Enumerated(EnumType.ORDINAL)
     private RoleType role;
+    private boolean isEmailValidate;
 
     public User() {
+        this.isEmailValidate = false;
     }
 
     public Long getId() {
@@ -53,5 +55,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEmailValidate() {
+        return isEmailValidate;
+    }
+
+    public void setEmailValidate(boolean emailValidate) {
+        isEmailValidate = emailValidate;
     }
 }

@@ -20,6 +20,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.example.userservice.models.User userEntity = userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with UserName: " + username));
+//        TODO: validate email
+//        if (!userEntity.isEmailValidate()) {
+//            throw new UsernameNotFoundException("The email is not yet validated");
+//        }
         return new User(userEntity.getEmail(), userEntity.getPassword(), AuthorityUtils.createAuthorityList(userEntity.getRole().toString()));
     }
 }
