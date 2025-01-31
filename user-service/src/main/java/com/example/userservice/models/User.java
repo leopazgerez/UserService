@@ -10,7 +10,7 @@ public class User {
     @GeneratedValue
     private Long id;
     @Column()
-    private String userName;
+    private String userName,password;
     @Column(unique = true)
     private String email;
     @Enumerated(EnumType.ORDINAL)
@@ -45,5 +45,13 @@ public class User {
 
     public void setRole(RoleType role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

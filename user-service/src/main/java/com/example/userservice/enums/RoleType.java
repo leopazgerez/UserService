@@ -14,4 +14,13 @@ public enum RoleType {
     public Long getValue() {
         return this.value;
     }
+
+    public static RoleType fromOrdinal(Long ordinal) {
+        for (RoleType role : RoleType.values()) {
+            if (role.ordinal() == ordinal) {
+                return role;
+            }
+        }
+        throw new IllegalArgumentException("No RoleType found with ordinal: " + ordinal);
+    }
 }
